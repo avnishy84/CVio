@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# CVio — AI-Powered Resume Builder & Optimizer
+
+CVio is a production-ready SaaS web application that helps job seekers craft standout resumes. Upload your CV, get an ATS score, optimize with AI, tailor it to your target role, and export in PDF or DOCX — all in one place.
+
+## Features
+
+- **AI Resume Optimization** — Rewrites your resume with strong action verbs and quantified achievements
+- **ATS Scoring** — Weighted breakdown across 6 categories so you know exactly what to fix
+- **Role-Based Tailoring** — Optimizes your CV for Software Developer, UI/UX Designer, Product Manager, HR, or Marketing roles
+- **Personal Branding Insights** — Tone analysis, UVP detection, headline and tagline suggestions
+- **LinkedIn Comparison** — Surfaces inconsistencies between your resume and LinkedIn profile
+- **Multi-Format Export** — Download your polished CV as PDF or DOCX
+
+## Tech Stack
+
+- [Next.js 14](https://nextjs.org) (App Router, TypeScript)
+- [Tailwind CSS](https://tailwindcss.com) with glassmorphism UI
+- [OpenAI GPT-4o](https://openai.com) for all AI features
+- [Firebase](https://firebase.google.com) Auth + Firestore
+- [Puppeteer](https://pptr.dev) for PDF export
+- [docx](https://docx.js.org) for DOCX export
 
 ## Getting Started
 
-First, run the development server:
+Copy the example env file and fill in your credentials:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+cp .env.local.example .env.local
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Install dependencies and run the dev server:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm install
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Open [http://localhost:3000](http://localhost:3000) to see CVio running locally.
 
-## Learn More
+## Testing
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm test              # run all tests once
+npm run test:coverage # with coverage report
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Tests use Jest + ts-jest + fast-check for property-based testing. Firebase Emulator Suite is used for Auth and Firestore — no real Firebase calls in CI.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Environment Variables
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+See `.env.local.example` for the full list of required variables (`OPENAI_API_KEY`, `NEXT_PUBLIC_FIREBASE_*`, `FIREBASE_*`).

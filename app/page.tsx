@@ -1,101 +1,139 @@
-import Image from "next/image";
+import Link from "next/link";
+import type { Metadata } from "next";
 
-export default function Home() {
+export const metadata: Metadata = {
+  title: "CVio — AI Resume Builder & ATS Optimizer",
+  description:
+    "CVio helps you build, optimize, and tailor your resume with AI. Get instant ATS scores, personal branding insights, and one-click export.",
+  openGraph: {
+    title: "CVio — AI Resume Builder & ATS Optimizer",
+    description:
+      "Build and optimize your resume with CVio. AI-powered ATS scoring, role tailoring, and one-click PDF/DOCX export.",
+    siteName: "CVio",
+  },
+};
+
+const FEATURES = [
+  {
+    icon: "📄",
+    title: "Smart Resume Parsing",
+    desc: "Upload PDF or DOCX and CVio extracts every section instantly.",
+  },
+  {
+    icon: "🎯",
+    title: "ATS Score & Breakdown",
+    desc: "See exactly how your resume performs against applicant tracking systems.",
+  },
+  {
+    icon: "✨",
+    title: "AI Optimization",
+    desc: "GPT-4o rewrites your content with strong action verbs and quantified impact.",
+  },
+  {
+    icon: "🎭",
+    title: "Role-Based Tailoring",
+    desc: "Tailor your CV for Software Dev, Product Manager, Designer, HR, or Marketing.",
+  },
+  {
+    icon: "🔗",
+    title: "LinkedIn Comparison",
+    desc: "Spot inconsistencies between your resume and LinkedIn profile in seconds.",
+  },
+  {
+    icon: "📤",
+    title: "PDF & DOCX Export",
+    desc: "Download your polished resume in any format, pixel-perfect every time.",
+  },
+];
+
+export default function HomePage() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <main className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white">
+      {/* Nav */}
+      <nav className="flex items-center justify-between px-6 py-4 max-w-6xl mx-auto">
+        <span className="text-2xl font-bold tracking-tight">CVio</span>
+        <div className="flex items-center gap-3">
+          <Link
+            href="/login"
+            className="px-4 py-2 rounded-xl text-sm font-medium text-white/70 hover:text-white transition-colors"
           >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            Sign in
+          </Link>
+          <Link
+            href="/register"
+            className="px-4 py-2 rounded-xl bg-purple-600 hover:bg-purple-500 text-sm font-semibold transition-colors"
           >
-            Read our docs
-          </a>
+            Get started free
+          </Link>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+      </nav>
+
+      {/* Hero */}
+      <section className="flex flex-col items-center text-center px-6 pt-20 pb-16 max-w-4xl mx-auto">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-500/20 border border-purple-500/30 text-purple-300 text-xs font-semibold uppercase tracking-widest mb-6">
+          AI-Powered Resume Builder
+        </div>
+        <h1 className="text-5xl sm:text-6xl font-bold tracking-tight leading-tight mb-6">
+          Land more interviews
+          <br />
+          <span className="text-purple-400">with CVio</span>
+        </h1>
+        <p className="text-lg text-white/60 max-w-2xl mb-10">
+          Upload your resume, get an instant ATS score, let AI optimize every
+          section, and export a polished PDF or DOCX — all in one place.
+        </p>
+        <div className="flex flex-wrap gap-4 justify-center">
+          <Link
+            href="/register"
+            className="px-7 py-3 rounded-xl bg-purple-600 hover:bg-purple-500 font-semibold text-base transition-colors shadow-lg shadow-purple-900/40"
+          >
+            Start for free →
+          </Link>
+          <Link
+            href="/login"
+            className="px-7 py-3 rounded-xl border border-white/20 hover:bg-white/10 font-semibold text-base transition-colors"
+          >
+            Sign in
+          </Link>
+        </div>
+      </section>
+
+      {/* Features grid */}
+      <section className="max-w-6xl mx-auto px-6 pb-24">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {FEATURES.map((f) => (
+            <div
+              key={f.title}
+              className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md p-6 hover:bg-white/10 transition-colors"
+            >
+              <div className="text-3xl mb-3">{f.icon}</div>
+              <h3 className="font-semibold text-white mb-1">{f.title}</h3>
+              <p className="text-sm text-white/55">{f.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="text-center px-6 pb-24">
+        <div className="inline-block rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md px-10 py-10 max-w-xl">
+          <h2 className="text-2xl font-bold mb-3">Ready to optimize your CV?</h2>
+          <p className="text-white/55 text-sm mb-6">
+            Create a free account and upload your first resume in under a minute.
+          </p>
+          <Link
+            href="/register"
+            className="inline-block px-7 py-3 rounded-xl bg-purple-600 hover:bg-purple-500 font-semibold transition-colors"
+          >
+            Get started with CVio
+          </Link>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="text-center text-white/30 text-xs pb-8">
+        © {new Date().getFullYear()} CVio — AI Resume Builder &amp; ATS Optimizer
       </footer>
-    </div>
+    </main>
   );
 }
