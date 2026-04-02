@@ -1,5 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import HomeNav from "@/components/HomeNav";
+import HeroCTA from "@/components/HeroCTA";
 
 export const metadata: Metadata = {
   title: "CVio — AI Resume Builder & ATS Optimizer",
@@ -14,59 +16,19 @@ export const metadata: Metadata = {
 };
 
 const FEATURES = [
-  {
-    icon: "📄",
-    title: "Smart Resume Parsing",
-    desc: "Upload PDF or DOCX and CVio extracts every section instantly.",
-  },
-  {
-    icon: "🎯",
-    title: "ATS Score & Breakdown",
-    desc: "See exactly how your resume performs against applicant tracking systems.",
-  },
-  {
-    icon: "✨",
-    title: "AI Optimization",
-    desc: "GPT-4o rewrites your content with strong action verbs and quantified impact.",
-  },
-  {
-    icon: "🎭",
-    title: "Role-Based Tailoring",
-    desc: "Tailor your CV for Software Dev, Product Manager, Designer, HR, or Marketing.",
-  },
-  {
-    icon: "🔗",
-    title: "LinkedIn Comparison",
-    desc: "Spot inconsistencies between your resume and LinkedIn profile in seconds.",
-  },
-  {
-    icon: "📤",
-    title: "PDF & DOCX Export",
-    desc: "Download your polished resume in any format, pixel-perfect every time.",
-  },
+  { icon: "📄", title: "Smart Resume Parsing", desc: "Upload PDF or DOCX and CVio extracts every section instantly." },
+  { icon: "🎯", title: "ATS Score & Breakdown", desc: "See exactly how your resume performs against applicant tracking systems." },
+  { icon: "✨", title: "AI Optimization", desc: "GPT-4o rewrites your content with strong action verbs and quantified impact." },
+  { icon: "🎭", title: "Role-Based Tailoring", desc: "Tailor your CV for Software Dev, Product Manager, Designer, HR, or Marketing." },
+  { icon: "🔗", title: "LinkedIn Comparison", desc: "Spot inconsistencies between your resume and LinkedIn profile in seconds." },
+  { icon: "📤", title: "PDF & DOCX Export", desc: "Download your polished resume in any format, pixel-perfect every time." },
 ];
 
 export default function HomePage() {
   return (
     <main className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white">
-      {/* Nav */}
-      <nav className="flex items-center justify-between px-6 py-4 max-w-6xl mx-auto">
-        <span className="text-2xl font-bold tracking-tight">CVio</span>
-        <div className="flex items-center gap-3">
-          <Link
-            href="/login"
-            className="px-4 py-2 rounded-xl text-sm font-medium text-white/70 hover:text-white transition-colors"
-          >
-            Sign in
-          </Link>
-          <Link
-            href="/register"
-            className="px-4 py-2 rounded-xl bg-purple-600 hover:bg-purple-500 text-sm font-semibold transition-colors"
-          >
-            Get started free
-          </Link>
-        </div>
-      </nav>
+      {/* Auth-aware nav */}
+      <HomeNav />
 
       {/* Hero */}
       <section className="flex flex-col items-center text-center px-6 pt-20 pb-16 max-w-4xl mx-auto">
@@ -79,33 +41,16 @@ export default function HomePage() {
           <span className="text-purple-400">with CVio</span>
         </h1>
         <p className="text-lg text-white/60 max-w-2xl mb-10">
-          Upload your resume, get an instant ATS score, let AI optimize every
-          section, and export a polished PDF or DOCX — all in one place.
+          Upload your resume, get an instant ATS score, let AI optimize every section, and export a polished PDF or DOCX — all in one place.
         </p>
-        <div className="flex flex-wrap gap-4 justify-center">
-          <Link
-            href="/register"
-            className="px-7 py-3 rounded-xl bg-purple-600 hover:bg-purple-500 font-semibold text-base transition-colors shadow-lg shadow-purple-900/40"
-          >
-            Start for free →
-          </Link>
-          <Link
-            href="/login"
-            className="px-7 py-3 rounded-xl border border-white/20 hover:bg-white/10 font-semibold text-base transition-colors"
-          >
-            Sign in
-          </Link>
-        </div>
+        <HeroCTA />
       </section>
 
       {/* Features grid */}
       <section className="max-w-6xl mx-auto px-6 pb-24">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {FEATURES.map((f) => (
-            <div
-              key={f.title}
-              className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md p-6 hover:bg-white/10 transition-colors"
-            >
+            <div key={f.title} className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md p-6 hover:bg-white/10 transition-colors">
               <div className="text-3xl mb-3">{f.icon}</div>
               <h3 className="font-semibold text-white mb-1">{f.title}</h3>
               <p className="text-sm text-white/55">{f.desc}</p>
@@ -121,16 +66,12 @@ export default function HomePage() {
           <p className="text-white/55 text-sm mb-6">
             Create a free account and upload your first resume in under a minute.
           </p>
-          <Link
-            href="/register"
-            className="inline-block px-7 py-3 rounded-xl bg-purple-600 hover:bg-purple-500 font-semibold transition-colors"
-          >
+          <Link href="/register" className="inline-block px-7 py-3 rounded-xl bg-purple-600 hover:bg-purple-500 font-semibold transition-colors">
             Get started with CVio
           </Link>
         </div>
       </section>
 
-      {/* Footer */}
       <footer className="text-center text-white/30 text-xs pb-8">
         © {new Date().getFullYear()} CVio — AI Resume Builder &amp; ATS Optimizer
       </footer>

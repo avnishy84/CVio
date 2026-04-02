@@ -1,0 +1,52 @@
+runConfig:
+  runtime: nodejs20
+  concurrency: 100
+  cpu: 1
+  memoryMiB: 512
+  minInstances: 0
+  maxInstances: 10
+
+env:
+  - variable: OPENAI_API_KEY
+    secret: OPENAI_API_KEY
+  - variable: FIREBASE_PROJECT_ID
+    secret: FIREBASE_PROJECT_ID
+  - variable: FIREBASE_CLIENT_EMAIL
+    secret: FIREBASE_CLIENT_EMAIL
+  - variable: FIREBASE_PRIVATE_KEY
+    secret: FIREBASE_PRIVATE_KEY
+  - variable: NEXT_PUBLIC_FIREBASE_API_KEY
+    value: AIzaSyBFUi0Nvxed2sFhohlwzZuaHzXE2P7AiVg
+    availability:
+      - BUILD
+      - RUNTIME
+  - variable: NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN
+    value: cvio-2026.firebaseapp.com
+    availability:
+      - BUILD
+      - RUNTIME
+  - variable: NEXT_PUBLIC_FIREBASE_PROJECT_ID
+    value: cvio-2026
+    availability:
+      - BUILD
+      - RUNTIME
+  - variable: NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET
+    value: cvio-2026.firebasestorage.app
+    availability:
+      - BUILD
+      - RUNTIME
+  - variable: NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID
+    value: "222429507936"
+    availability:
+      - BUILD
+      - RUNTIME
+  - variable: NEXT_PUBLIC_FIREBASE_APP_ID
+    value: 1:222429507936:web:4121d5455d6e6cb38e6e05
+    availability:
+      - BUILD
+      - RUNTIME
+  - variable: SKIP_PUPPETEER
+    value: "true"
+    availability:
+      - BUILD
+      - RUNTIME

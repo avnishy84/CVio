@@ -82,7 +82,7 @@ function DashboardContent() {
             <p className="text-white/50 text-sm mt-1">Manage and edit your CVio resumes</p>
           </div>
           <Link
-            href="/"
+            href="/upload"
             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white text-sm font-medium transition-colors"
           >
             <span>+</span> Upload New Resume
@@ -111,7 +111,7 @@ function DashboardContent() {
             </div>
             <p className="text-white/60 text-base">No resumes yet.</p>
             <Link
-              href="/"
+              href="/upload"
               className="px-5 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white text-sm font-medium transition-colors"
             >
               Upload your first resume

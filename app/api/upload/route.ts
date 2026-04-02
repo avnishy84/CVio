@@ -64,7 +64,12 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
   const arrayBuffer = await file.arrayBuffer();
   const buffer = Buffer.from(arrayBuffer);
 
-  const result = await parseResume(buffer, file.type);
-
-  return NextResponse.json(result, { status: 200 });
+  try {
+    const result = await parseResume(buffer, file.type);
+    return NextResponse.json(result, { status: 200 });
+  } catch (err) {
+    const message = err instanceof Error ? err.message : "Failed to parse resume";
+    console.error("[/api/upload] parse error:", err);
+    return NextResponse.json({ error: message }, { status: 500 });
+  }
 }

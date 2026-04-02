@@ -6,7 +6,7 @@
 
 import crypto from "crypto";
 import OpenAI from "openai";
-import { PDFParse } from "pdf-parse";
+import pdfParse from "pdf-parse";
 import mammoth from "mammoth";
 import type {
   ResumeData,
@@ -186,9 +186,8 @@ export async function parseResume(
   let rawText: string;
 
   if (mimeType === "application/pdf") {
-    // Requirement 2.1 — PDF path uses pdf-parse
-    const parser = new PDFParse({ data: buffer });
-    const result = await parser.getText();
+    // Requirement 2.1 — PDF path uses pdf-parse v1
+    const result = await pdfParse(buffer);
     rawText = result.text;
   } else {
     // Requirement 2.2 — DOCX path uses mammoth

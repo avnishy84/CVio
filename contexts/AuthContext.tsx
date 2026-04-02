@@ -25,7 +25,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       setCurrentUser(user);
       if (user) {
-        const token = await user.getIdToken();
+        // forceRefresh=false uses cached token; Firebase auto-refreshes before expiry
+        const token = await user.getIdToken(false);
         setIdToken(token);
       } else {
         setIdToken(null);
@@ -35,6 +36,20 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
     return unsubscribe;
   }, []);
+
+  // Refresh the ID token every 55 minutes (tokens expire after 60 min)
+  useEffect(() => {
+    if (!currentUser) return;
+    const interval = setInterval(async () => {
+      try {
+        const token = await currentUser.getIdToken(true);
+        setIdToken(token);
+      } catch {
+        // token refresh failed — user will be signed out by onAuthStateChanged
+      }
+    }, 55 * 60 * 1000);
+    return () => clearInterval(interval);
+  }, [currentUser]);
 
   return (
     <AuthContext.Provider value={{ currentUser, idToken, loading }}>

@@ -1,5 +1,5 @@
 import { initializeApp, getApps, getApp, FirebaseApp } from "firebase/app";
-import { getAuth, Auth } from "firebase/auth";
+import { getAuth, Auth, browserLocalPersistence, setPersistence } from "firebase/auth";
 import { getFirestore, Firestore } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -16,4 +16,10 @@ const app: FirebaseApp = getApps().length === 0 ? initializeApp(firebaseConfig) 
 
 export const auth: Auth = getAuth(app);
 export const db: Firestore = getFirestore(app);
+
+// Persist session in localStorage so it survives page refreshes and tab closes
+if (typeof window !== "undefined") {
+  setPersistence(auth, browserLocalPersistence).catch(() => {});
+}
+
 export default app;
