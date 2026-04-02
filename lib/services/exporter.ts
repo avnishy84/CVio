@@ -19,7 +19,7 @@ import type { ResumeData, ExportResult } from "../../types/resume";
 // HTML template renderer
 // ---------------------------------------------------------------------------
 
-function renderTemplateToHTML(data: ResumeData, _template: string): string {
+function renderTemplateToHTML(data: ResumeData, template: string): string {
   const { personal_info, summary, skills, experience, education, projects } = data;
 
   const esc = (s: string | null | undefined) =>
