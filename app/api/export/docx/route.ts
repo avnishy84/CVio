@@ -34,7 +34,7 @@ export const POST = withAuth(async (req: NextRequest): Promise<NextResponse> => 
 
   const result = await exportToDOCX(body.data);
 
-  return new Response(result.buffer, {
+  return new Response(new Uint8Array(result.buffer), {
     status: 200,
     headers: {
       "Content-Type": result.mimeType,
